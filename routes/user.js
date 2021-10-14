@@ -109,15 +109,17 @@ router.post("/user/login", async (req, res) => {
 router.get("/users/:id", async (req, res) => {
   if (req.params.id) {
     try {
-      const user = await User.findById(req.params.id);
+      const user = await User.findOne(req.params._id);
 
       if (user) {
         res.status(200).json({
           id: user._id,
+          email: user.email,
           username: user.username,
+          avatar: user.avatar.secure_url,
         });
       } else {
-        res.status(200).json({ message: "User not found." });
+        res.status(400).json({ message: "User not found." });
       }
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -267,7 +269,7 @@ router.put("/user/recover_password", async (req, res) => {
         const data = {
           from: "Gamepad <postmaster@" + MAILGUN_DOMAIN + ">",
           to: userEmail,
-          subject: "Change your password on Airbnb.",
+          subject: "Change your password on Gamepad.",
           text: `Please, click on the following link to change your password : https://gamepad/change_password?token=${update_password_token}. You have 15 minutes to change your password.`,
         };
 
