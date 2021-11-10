@@ -9,7 +9,7 @@
 <br/>
 
 Personal fullstack project inspired by RAWG website.<br>
-The project is hosted on Netlify (frontend) and Heroku (backend).<br> 
+The project is hosted by Netlify (frontend) and Heroku (backend).<br> 
 See frontend code <a href="https://github.com/acctYann/Gamepad-frontend"> here</a>.</br>
 <br/>
 
